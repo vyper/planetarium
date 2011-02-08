@@ -1,0 +1,9 @@
+name: WSO2 Brasil
+
+template: basic
+
+urls:
+  - 'http://www.mcorp.com.br/feed/atom'
+  - 'http://www.leandroprado.com.br/feed/atom'
+
+path: output/

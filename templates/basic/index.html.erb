@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+  <head>
+    <title><%= name %></title>
+    <meta name="generator" content="Planetarium (<%= version %>) - http://github.com/mcorp/planetarium/">
+	  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+  </head>
+  <body>
+    <h1><%= name %></h1>
+
+    <% feeds.each do |feed| %>
+      <h2><%= feed.title %></h2>
+
+      <% feed.entries.each do |entry| %>
+        <h3><%= entry.title %></h3>
+        <p>- <%= entry.author %> (<%= entry.published %>)</p>
+        <div>
+          <%= entry.content %>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    <hr />
+    
+    <ul>
+    <% feeds.each do |feed| %>
+      <li><a href="<%= feed.url %>"><%= feed.title %></a> (<a href="<%= feed.feed_url %>">feed</a>)</li>
+    <% end %>
+    </ul>
+    
+    <p>Powered by: <a href="http://github.com/mcorp/planetarium/">Planetarium</a> (<%= version %>)</p>
+  </body>
+</html>
+

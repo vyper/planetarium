@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require 'planetarium'
+
+config   = Planetarium.configuration
+
+name     = config['name']
+urls     = config['urls']
+template = config['template']
+version  = Planetarium::VERSION
+
+feeds = Feedzirra::Feed.fetch_and_parse(config['urls']).each_value
+
+File.open(config["path"] + "index.html", "w") do |out|
+  t = ERB.new(File.read("templates/#{template}/index.html.erb"), 0, "%<>")
+  out.puts t.result(binding)
+end
+
