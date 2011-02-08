@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
+  <head>
+    <title><%= name %></title>
+	  <meta name="google-site-verification" content="e0f-T_503vbHSayfYjY5YHugMOKJWbZOFQMZnLBQi1E" />
+	  <meta name="description" content="Comunidade brasileira de interessados e curiosos na plataforma WSO2, estamos aqui para compartilharmos conhecimento e notícias, além é claro de ajudar a difundir a tecnologia" />
+	  <meta name="keywords" content="tecnologia, soa, wso2, arquitetura, desenvolvimento, código-livre" />
+	  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+    <meta name="generator" content="Planetarium (<%= version %>) - http://github.com/mcorp/planetarium/">
+  	<link rel="canonical" href="http://www.wso2brasil.com.br/" />
+    <link rel="stylesheet" href="http://www.wso2brasil.com.br/styles/wso2brasil.css" type="text/css">
+    <!--link rel="alternate" href="http://www.wso2brasil.com.br/atom.xml" title="" type="application/atom+xml"-->
+  </head>
+
+  <body>
+    <div id="header">
+      <h1><a href="./"><%= name %></a></h1>
+    </div>
+
+    <div class="colmask rightmenu">
+      <div class="colleft">
+        <div class="col1">
+          <div class="entry">
+          <% feeds.each do |feed| %>
+            <% feed.entries.each do |entry| %>
+            <h2><%= entry.title %></h2>
+            <p class="author"><%= entry.author %> (<%= entry.published %>)</p>
+            <div class="content">
+              <%= entry.content %>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="col2">
+          <h2>Sobre</h2>
+          <p>Somos uma comunidade brasileira de interessados e curiosos na plataforma WSO2, estamos aqui para compartilharmos conhecimento e not&iacute;cias, al&eacute;m &eacute; claro de ajudar a difundir a tecnologia.</p>
+          <p>E para quem ainda n&atilde;o conhece o WSO2, &eacute; uma su&iacute;te de produtos de c&oacute;digo-livre integrados e modulares que d&atilde;o suporte para cimplanta&ccedil;&atilde;o de uma plataforma SOA, suprindo a parte de cria&ccedil;&atilde;o, conex&atilde;o, composi&ccedil;&atilde;o e governan&ccedil;a de servi&ccedil;os.</p>
+          <p>Sinta-se a vontade para ler nossas &uacute;ltimas postagens e acompanhar o pessoal da comunidade.</p>
+
+          <!--h2>@WSO2Brasil</h2-->
+
+          <h2>Comunidade</h2>
+          <ul>
+            <li><a href="comunidade.html#jose-nogueira">José Nogueira</a></li>
+            <li><a href="comunidade.html#leandro-prado">Leandro Prado</a></li>
+            <li><a href="comunidade.html#leonardo-saraiva">Leonardo Saraiva</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+        <a href="http://www.planetplanet.org/" class="alignright"><img src="images/planet.png" width="80" height="15" alt="Powered by PlanetPlanet" /></a>
+    </div>
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-15892577-2");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+  </body>
+</html>
+

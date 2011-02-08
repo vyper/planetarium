@@ -1,6 +1,6 @@
 name: WSO2 Brasil
 
-template: basic
+template: wso2brasil
 
 urls:
   - 'http://www.mcorp.com.br/feed/atom'
