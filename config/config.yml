@@ -1,9 +1,9 @@
 name: WSO2 Brasil
 
-template: wso2brasil
+template: basic
 
 urls:
   - 'http://www.mcorp.com.br/feed/atom'
   - 'http://www.leandroprado.com.br/feed/atom'
 
-path: output/
+path: output

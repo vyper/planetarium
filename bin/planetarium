@@ -4,6 +4,7 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require 'planetarium'
 
+=begin
 config   = Planetarium.configuration
 
 name     = config['name']
@@ -17,4 +18,26 @@ File.open(config["path"] + "index.html", "w") do |out|
   t = ERB.new(File.read("templates/#{template}/index.html.erb"), 0, "%<>")
   out.puts t.result(binding)
 end
+=end
 
+Main {
+  description <<-TXT
+    Fork of PlanetPlanet in Ruby
+    
+    Run 'planetarium [command] help' for more informations
+  TXT
+
+  mode(:update) {
+    run { Planetarium::Command.update }
+  }
+
+  mode(:version) {
+    description 'Show planetarium version'
+    
+    run {
+      puts "Planetarium #{Planetarium::VERSION}"
+    }
+  }
+  
+  run { help! }
+}
