@@ -4,23 +4,9 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require 'planetarium'
 
-=begin
-config   = Planetarium.configuration
-
-name     = config['name']
-urls     = config['urls']
-template = config['template']
-version  = Planetarium::VERSION
-
-feeds = Feedzirra::Feed.fetch_and_parse(config['urls']).each_value
-
-File.open(config["path"] + "index.html", "w") do |out|
-  t = ERB.new(File.read("templates/#{template}/index.html.erb"), 0, "%<>")
-  out.puts t.result(binding)
-end
-=end
-
 Main {
+  version Planetarium::VERSION
+
   description <<-TXT
     Fork of PlanetPlanet in Ruby
     
@@ -28,15 +14,21 @@ Main {
   TXT
 
   mode(:update) {
+    description 'Update planetarium'
+  
     run { Planetarium::Command.update }
   }
 
   mode(:version) {
     description 'Show planetarium version'
     
-    run {
-      puts "Planetarium #{Planetarium::VERSION}"
-    }
+    run { puts "Planetarium #{version}" }
+  }
+  
+  mode(:list) {
+    description 'List feeds in planetarium'
+    
+    run { Planetarium::Command.list }
   }
   
   run { help! }

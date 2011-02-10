@@ -13,5 +13,11 @@ module Planetarium
         out.puts t.result(binding)
       end
     end
+    
+   def self.list
+      config = Planetarium::Base.config
+      puts "Feeds in planetarium:"
+      config['urls'].each { |u| puts " - #{u}" }
+    end
   end
 end
