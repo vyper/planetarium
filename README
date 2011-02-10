@@ -1,3 +1,12 @@
-Fork of PlanetPlanet[1] in Ruby.
+Planetarium is feed aggregator writed in Ruby.
 
-[1] http://www.planetplanet.org/
+For install:
+$ git clone http://github.com/vyper/planetarium.git
+
+Open 'config/config.yml' and configure.
+
+Run:
+$ ./bin/planetarium update
+
+For help or more information:
+$ ./bin/planetarium help
