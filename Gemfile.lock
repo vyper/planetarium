@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.0.3)
+    activesupport (3.0.4)
     arrayfields (4.7.4)
     builder (3.0.0)
     curb (0.7.10)

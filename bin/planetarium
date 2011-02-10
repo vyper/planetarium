@@ -31,5 +31,41 @@ Main {
     run { Planetarium::Command.list }
   }
   
+  mode(:add) {
+    description 'Add a feed to planetarium'
+    
+    example <<-TXT
+      $ planetarium add url_feed_to_remove
+      $ planetarium add http://www.mcorp.com.br/feed/atom
+    TXT
+    
+    mixin :argument_url
+    
+    run { 
+      Planetarium::Command.add(url) 
+    }
+  }
+  
+  mode(:del) {
+    description 'Remove a feed from planetarium'
+    
+    example <<-TXT
+      $ planetarium del url_feed_to_remove
+      $ planetarium del http://www.mcorp.com.br/feed/atom
+    TXT
+    
+    mixin :argument_url
+    
+    run { 
+      Planetarium::Command.del(url) 
+    }
+  }
+  
+  mixin(:argument_url) {
+    argument(:url) {
+      attr
+    }
+  }
+  
   run { help! }
 }

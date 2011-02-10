@@ -1,9 +1,7 @@
+--- 
 name: WSO2 Brasil
-
+urls: 
+- http://www.mcorp.com.br/feed/atom
+- http://www.leandroprado.com.br/feed/atom
 template: basic
-
-urls:
-  - 'http://www.mcorp.com.br/feed/atom'
-  - 'http://www.leandroprado.com.br/feed/atom'
-
-path: output
+export_path: /home/lsaraiva/Desktop/p/planetarium/output/
