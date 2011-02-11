@@ -1,7 +1,7 @@
 --- 
 name: Planetarium
 urls: 
-- http://www.leandroprado.com.br/feed/atom
 - http://www.mcorp.com.br/feed/atom
+- http://www.leandroprado.com.br/feed/atom
 template: basic
 export_path: /home/lsaraiva/Desktop/p/planetarium/output/
