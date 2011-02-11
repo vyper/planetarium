@@ -1,7 +1,13 @@
 module Planetarium
   module Base
     def self.config
-      YAML::load_file(CONFIG_FILE)
+      if @config.nil?
+        config = YAML::load_file(CONFIG_FILE)
+      else
+        config = YAML::load_file(@config)
+      end
+
+      config
     end
     
     def self.config=(options)
@@ -14,10 +20,9 @@ module Planetarium
       self.write_config(config)
     end
 
-    def self.add url
+    def self.add config, url
       config = self.config
       config["urls"] << url
-
       self.write_config(config)
     end
     

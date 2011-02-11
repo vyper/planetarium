@@ -8,7 +8,7 @@ Main {
   version Planetarium::VERSION
 
   description <<-TXT
-    Fork of PlanetPlanet in Ruby
+    Planetarium is a feed aggregator written in Ruby.
     
     Run 'planetarium [command] help' for more informations
   TXT
@@ -16,7 +16,16 @@ Main {
   mode(:update) {
     description 'Update planetarium'
   
-    run { Planetarium::Command.update }
+    example <<-TXT
+      $ planetarium update
+      $ planetarium update -c config/config.yml
+      $ planetarium update --config config/config.yml -t basic
+      $ planetarium update --template basic
+    TXT
+    
+    mixin :option_config, :option_export_path, :option_template
+    
+    run { Planetarium::Command.update(config, {:export_path => export_path, :template => template}) }
   }
 
   mode(:version) {
@@ -28,7 +37,9 @@ Main {
   mode(:list) {
     description 'List feeds in planetarium'
     
-    run { Planetarium::Command.list }
+    mixin :option_config
+    
+    run { Planetarium::Command.list(config) }
   }
   
   mode(:add) {
@@ -37,12 +48,14 @@ Main {
     example <<-TXT
       $ planetarium add url_feed_to_remove
       $ planetarium add http://www.mcorp.com.br/feed/atom
+      $ planetarium add http://www.leandroprado.com.br/feed/atom --config config/config.yml
+      $ planetarium add http://www.mcorp.com.br/feed/atom -c config/config.yml
     TXT
     
-    mixin :argument_url
+    mixin :argument_url, :option_config
     
     run { 
-      Planetarium::Command.add(url) 
+      Planetarium::Command.add(config, url) 
     }
   }
   
@@ -52,12 +65,14 @@ Main {
     example <<-TXT
       $ planetarium del url_feed_to_remove
       $ planetarium del http://www.mcorp.com.br/feed/atom
+      $ planetarium del http://www.leandroprado.com.br/feed/atom --config config/config.yml
+      $ planetarium del http://www.mcorp.com.br/feed/atom -c config/config.yml
     TXT
     
-    mixin :argument_url
+    mixin :argument_url, :option_config
     
     run { 
-      Planetarium::Command.del(url) 
+      Planetarium::Command.del(config, url) 
     }
   }
 
@@ -68,10 +83,6 @@ Main {
       The available commands are:
         - list                    List settings for your planetarium
         - set                     Change options for your planetarium
-          Options:
-            -n|--name             Setting name your planetarium
-            -t|--template         Setting template your planetarium
-            -x|--export_path      Setting path to export your planetarium
     TXT
     
     example <<-TXT
@@ -82,10 +93,10 @@ Main {
       $ planetarium config set -n Planetarium --export_path /var/www/planetarium/
     TXT
 
-    mixin :argument_command, :option_name, :option_template, :option_export_path
+    mixin :argument_command, :option_config, :option_name, :option_template, :option_export_path
     
     run {
-      Planetarium::Command.config(command, { :name => name, :template => template,
+      Planetarium::Command.config(config, command, { :name => name, :template => template,
                                              :export_path => export_path })
     }
   }
@@ -101,7 +112,7 @@ Main {
     option(:name, :n) {
       optional
       argument :required
-      desc 'Planetarium name'
+      desc 'Setting name your planetarium'
       attr
     }
   }
@@ -110,7 +121,7 @@ Main {
     option(:template, :t) {
       optional
       argument :required
-      desc 'Planetarium template'
+      desc 'Setting template your planetarium'
       attr
     }
   }
@@ -119,7 +130,16 @@ Main {
     option(:export_path, :x) {
       optional
       argument :required
-      desc 'Planetarium export path'
+      desc 'Setting path to export your planetarium'
+      attr
+    }
+  }
+
+  mixin(:option_config) {
+    option(:config, :c) {
+      optional
+      argument :required
+      desc 'Location of the planetarium configuration file'
       attr
     }
   }
