@@ -18,6 +18,17 @@ module Planetarium
       Planetarium::Base.add url
     end
     
+    def self.config(command, options)
+      if command.eql? "set"
+        Planetarium::Base.config = options
+      elsif command.eql? "list"
+        # TODO improve visualization
+        Planetarium::Base.config.each do |k, v|
+          puts "#{k}: #{v}"
+        end
+      end
+    end
+    
     def self.del(url)
       Planetarium::Base.del url
     end

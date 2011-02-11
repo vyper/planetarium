@@ -1,7 +1,9 @@
-Planetarium is feed aggregator writed in Ruby.
+Planetarium is a feed aggregator written in Ruby.
 
 For install:
 $ git clone http://github.com/vyper/planetarium.git
+$ cd planetarium
+$ bundle install
 
 Open 'config/config.yml' and configure.
 
@@ -10,3 +12,4 @@ $ ./bin/planetarium update
 
 For help or more information:
 $ ./bin/planetarium help
+

@@ -60,7 +60,70 @@ Main {
       Planetarium::Command.del(url) 
     }
   }
-  
+
+  mode(:config) {
+    description <<-TXT
+      Configure the options for your planetarium.
+      
+      The available commands are:
+        - list                    List settings for your planetarium
+        - set                     Change options for your planetarium
+          Options:
+            -n|--name             Setting name your planetarium
+            -t|--template         Setting template your planetarium
+            -x|--export_path      Setting path to export your planetarium
+    TXT
+    
+    example <<-TXT
+      $ planetarium config list
+      $ planetarium config set --name Planetarium
+      $ planetarium config set --template basic
+      $ planetarium config set --name "WSO2 Brasil" --template wso2brasil
+      $ planetarium config set -n Planetarium --export_path /var/www/planetarium/
+    TXT
+
+    mixin :argument_command, :option_name, :option_template, :option_export_path
+    
+    run {
+      Planetarium::Command.config(command, { :name => name, :template => template,
+                                             :export_path => export_path })
+    }
+  }
+
+  mixin(:argument_command) {
+    argument(:command) {
+      default 'list'
+      attr
+    }
+  }
+
+  mixin(:option_name) {
+    option(:name, :n) {
+      optional
+      argument :required
+      desc 'Planetarium name'
+      attr
+    }
+  }
+
+  mixin(:option_template) {
+    option(:template, :t) {
+      optional
+      argument :required
+      desc 'Planetarium template'
+      attr
+    }
+  }
+
+  mixin(:option_export_path) {
+    option(:export_path, :x) {
+      optional
+      argument :required
+      desc 'Planetarium export path'
+      attr
+    }
+  }
+
   mixin(:argument_url) {
     argument(:url) {
       attr
