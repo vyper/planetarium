@@ -7,6 +7,7 @@
 	<link href="<%= url %>" />
 	<id>urn:uuid:<%= (0..36).to_a.map{|a| rand(36).to_s(36)}.join %></id>
 	<updated><%= updated.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
+	<generator uri="http://github.com/vyper/planetarium//">Planetarium (<%= version %>) - http://github.com/vyper/planetarium/</generator>
  
 <% feeds.each do |feed| %>
   <% feed.entries.each do |entry| %>
@@ -24,7 +25,6 @@
 		<source>
 			<title type="html"><%= feed.title %></title>
 			<link rel="self" href="<%= feed.feed_url %>"/>
-			<id>http://www.mcorp.com.br/feed/atom/</id>
 			<updated><%= feed.last_modified.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
 		</source>
 	</entry>
