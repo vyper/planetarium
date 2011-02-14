@@ -89,15 +89,17 @@ Main {
       $ planetarium config list
       $ planetarium config set --name Planetarium
       $ planetarium config set --template basic
+      $ planetarium config set --title Planetarium
       $ planetarium config set --name "WSO2 Brasil" --template wso2brasil
-      $ planetarium config set -n Planetarium --export_path /var/www/planetarium/
+      $ planetarium config set --url http://www.wso2brasil.com.br/
+      $ planetarium config set --name "WSO2 Brasil" --export_path /var/www/wso2brasil/
     TXT
 
-    mixin :argument_command, :option_config, :option_name, :option_template, :option_export_path
+    mixin :argument_command, :option_config, :option_name, :option_title, :option_url, :option_template, :option_export_path
     
     run {
-      Planetarium::Command.config(config, command, { :name => name, :template => template,
-                                             :export_path => export_path })
+      Planetarium::Command.config(config, command, { :name => name, :title => title, :url => url,
+                                                     :template => template, :export_path => export_path })
     }
   }
 
@@ -109,7 +111,7 @@ Main {
   }
 
   mixin(:option_name) {
-    option(:name, :n) {
+    option(:name) {
       optional
       argument :required
       desc 'Setting name your planetarium'
@@ -117,8 +119,26 @@ Main {
     }
   }
 
+  mixin(:option_title) {
+    option(:title) {
+      optional
+      argument :required
+      desc 'Setting title your planetarium'
+      attr
+    }
+  }
+
+  mixin(:option_url) {
+    option(:url) {
+      optional
+      argument :required
+      desc 'Setting url your planetarium'
+      attr
+    }
+  }
+
   mixin(:option_template) {
-    option(:template, :t) {
+    option(:template) {
       optional
       argument :required
       desc 'Setting template your planetarium'
@@ -127,7 +147,7 @@ Main {
   }
 
   mixin(:option_export_path) {
-    option(:export_path, :x) {
+    option(:export_path) {
       optional
       argument :required
       desc 'Setting path to export your planetarium'

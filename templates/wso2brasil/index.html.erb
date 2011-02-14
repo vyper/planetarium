@@ -24,7 +24,7 @@
           <% feeds.each do |feed| %>
             <% feed.entries.each do |entry| %>
             <h2><%= entry.title %></h2>
-            <p class="author"><%= entry.author %> (<%= entry.published %>)</p>
+            <p class="author"><%= entry.author %> (<%= entry.published.strftime("%d/%m/%Y") %>)</p>
             <div class="content">
               <%= entry.content %>
             </div>

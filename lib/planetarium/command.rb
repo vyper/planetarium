@@ -6,7 +6,10 @@ module Planetarium
       config = Planetarium::Base.config
 
       name        = config['name']
+      title       = config['title']
+      url         = config['url']
       urls        = config['urls']
+      updated     = Time.new
       version     = Planetarium::VERSION
       
       if options[:export_path].nil?
@@ -25,6 +28,11 @@ module Planetarium
     
       File.open("#{export_path}/index.html", "w") do |out|
         t = ERB.new(File.read("#{TEMPLATE_PATH}/#{template}/index.html.erb"), 0, "%<>")
+        out.puts t.result(binding)
+      end
+
+      File.open("#{export_path}/atom.xml", "w") do |out|
+        t = ERB.new(File.read("#{TEMPLATE_PATH}/atom.xml.erb"), 0, "%<>")
         out.puts t.result(binding)
       end
     end

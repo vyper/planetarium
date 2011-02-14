@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+	<title><%= name %></title>
+	<subtitle><%= title %></subtitle>
+	<link href="<%= url %>/atom.xml" rel="self" />
+	<link href="<%= url %>" />
+	<id>urn:uuid:<%= (0..36).to_a.map{|a| rand(36).to_s(36)}.join %></id>
+	<updated><%= updated.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
+ 
+<% feeds.each do |feed| %>
+  <% feed.entries.each do |entry| %>
+	<entry>
+		<id><%= entry.id %></id>
+		<title><%= entry.title %></title>
+		<link href="<%= entry.url %>" />
+		<updated><%= entry.updated.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
+	  <author>
+		  <name><%= entry.author %></name>
+      <uri><%= feed.url %></uri>
+	  </author>
+		<summaryZ><%= entry.summary %></summary>
+    <content type="html"><%= entry.content %></content>
+		<source>
+			<title type="html"><%= feed.title %></title>
+			<link rel="self" href="<%= feed.feed_url %>"/>
+			<id>http://www.mcorp.com.br/feed/atom/</id>
+			<updated><%= feed.last_modified.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
+		</source>
+	</entry>
+  <% end %>
+<% end %>
+ 
+</feed>
+

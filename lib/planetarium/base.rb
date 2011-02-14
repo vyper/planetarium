@@ -14,6 +14,8 @@ module Planetarium
       config = self.config
 
       config["name"]        = options[:name]        if !options[:name].nil?
+      config["title"]       = options[:title]       if !options[:title].nil?
+      config["url"]         = options[:url]         if !options[:url].nil?
       config["template"]    = options[:template]    if !options[:template].nil?    # TODO check template exists
       config["export_path"] = options[:export_path] if !options[:export_path].nil? # TODO check path exists
 
