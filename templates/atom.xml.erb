@@ -14,17 +14,20 @@
 	<entry>
 		<id><%= entry.id %></id>
 		<title><%= entry.title %></title>
-		<link href="<%= entry.url %>" />
+	  <link href="<%= entry.url %>" />
+    <% if !entry.updated.nil? %>
 		<updated><%= entry.updated.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
+    <% end %>
 	  <author>
 		  <name><%= entry.author %></name>
       <uri><%= feed.url %></uri>
 	  </author>
-		<summaryZ><%= entry.summary %></summary>
+		<summary><%= entry.summary %></summary>
     <content type="html"><%= entry.content %></content>
 		<source>
 			<title type="html"><%= feed.title %></title>
 			<link rel="self" href="<%= feed.feed_url %>"/>
+			<id><%= feed.feed_url %></id>
 			<updated><%= feed.last_modified.strftime("%Y-%m-%d %H:%M:%S %Z") %></updated>
 		</source>
 	</entry>

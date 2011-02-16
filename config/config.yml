@@ -1,9 +1,9 @@
 --- 
 name: Planetarium
-title: "Planetarium: Feed aggregator written in Ruby"
-url: http://www.wso2brasil.com.br/
-template: basic
 urls: 
 - http://www.mcorp.com.br/feed/atom
 - http://www.leandroprado.com.br/feed/atom
+title: "Planetarium: Feed aggregator written in Ruby"
+url: http://www.wso2brasil.com.br/
+template: basic
 export_path: /home/lsaraiva/Desktop/p/planetarium/output/

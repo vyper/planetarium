@@ -1,31 +1,29 @@
 module Planetarium
   module Command
     def self.update(config, options)
-      @config = config if !config.nil?
-      
-      config = Planetarium::Base.config
+      config = Planetarium::Config.new(config)
 
-      name        = config['name']
-      title       = config['title']
-      url         = config['url']
-      urls        = config['urls']
+      name        = config.name
+      title       = config.title
+      url         = config.url
+      urls        = config.urls
       updated     = Time.new
       version     = Planetarium::VERSION
       
       if options[:export_path].nil?
-        export_path = config["export_path"]
+        export_path = config.export_path
       else 
         export_path = options[:export_path]
       end
       
       if options[:template].nil?
-        template = config["template"]
+        template = config.template
       else 
         template = options[:template]
       end
       
-      feeds = Feedzirra::Feed.fetch_and_parse(config['urls']).each_value
-    
+      feeds = Feedzirra::Feed.fetch_and_parse(config.urls).each_value
+
       File.open("#{export_path}/index.html", "w") do |out|
         t = ERB.new(File.read("#{TEMPLATE_PATH}/#{template}/index.html.erb"), 0, "%<>")
         out.puts t.result(binding)
@@ -38,33 +36,42 @@ module Planetarium
     end
     
     def self.add(config, url)
-      @config = config if !config.nil?
-      Planetarium::Base.add url
+      config = Planetarium::Config.new(config)
+      config.urls << url
+      config.save
     end
     
     def self.del(config, url)
-      @config = config if !config.nil?
-      Planetarium::Base.del url
+      config = Planetarium::Config.new(config)
+      config.urls.delete url
+      config.save
     end
     
     def self.config(config, command, options)
-      @config = config if !config.nil?
+      config = Planetarium::Config.new(config)
 
       if command.eql? "set"
-        Planetarium::Base.config = options
+        config.name        = options[:name]        if !options[:name].nil?
+        config.title       = options[:title]       if !options[:title].nil?
+        config.url         = options[:url]         if !options[:url].nil?
+        config.template    = options[:template]    if !options[:template].nil?    # TODO check template exists
+        config.export_path = options[:export_path] if !options[:export_path].nil? # TODO check path exists
+        config.save
       elsif command.eql? "list"
-        # TODO improve visualization
-        Planetarium::Base.config.each do |k, v|
-          puts "#{k}: #{v}"
-        end
+        puts "name       : #{config.name}"
+        puts "title      : #{config.title}"
+        puts "url        : #{config.url}"
+        puts "template   : #{config.template}"
+        puts "export_path: #{config.export_path}"
+        puts "urls: "
+        config.urls.each { |u| puts " - #{u}" }
       end
     end
     
     def self.list(config)
-      @config = config if !config.nil?
-      config = Planetarium::Base.config
+      config = Planetarium::Config.new(config)
       puts "Feeds in planetarium:"
-      config['urls'].each { |u| puts " - #{u}" }
+      config.urls.each { |u| puts " - #{u}" }
     end
   end
 end

@@ -1,0 +1,8 @@
+--- 
+name: Planetarium
+urls: 
+- http://www.mcorp.com.br/feed/atom
+title: Planetarium
+url: http://planetarium.org/
+template: basic
+export_path: /var/www/planetarium/
