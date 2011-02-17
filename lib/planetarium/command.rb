@@ -24,11 +24,21 @@ module Planetarium
       
       feeds = Feedzirra::Feed.fetch_and_parse(config.urls).each_value
 
+      # loading plugins - TODO: improve load
+      plugins = {}
+      Dir.glob("#{File.dirname(__FILE__)}/plugins/*.rb").each { |file| require file }
+      Planetarium::Plugin::Base.repository.each do |r|
+        p = r.new
+        plugins[p.plugin_name] = p
+      end
+
+      # export html
       File.open("#{export_path}/index.html", "w") do |out|
         t = ERB.new(File.read("#{TEMPLATE_PATH}/#{template}/index.html.erb"), 0, "%<>")
         out.puts t.result(binding)
       end
 
+      # export atom
       File.open("#{export_path}/atom.xml", "w") do |out|
         t = ERB.new(File.read("#{TEMPLATE_PATH}/atom.xml.erb"), 0, "%<>")
         out.puts t.result(binding)
