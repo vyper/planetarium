@@ -23,6 +23,14 @@
     <% end %>
 
     <hr />
+    <h2>Tweets</h2>
+    <ul>
+    <% plugins[:twitter].search({ :from => "WSO2brasil"}).each do |t| %>
+      <li><%= t.text %><br />Por: <%= t.from_user %> em: <%= t.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></li>
+    <% end %>
+    </ul>
+    
+    <hr />
 
     <ul>
     <% feeds.each do |feed| %>

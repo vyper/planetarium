@@ -24,7 +24,9 @@ module Planetarium
       
       feeds = Feedzirra::Feed.fetch_and_parse(config.urls).each_value
 
-      # loading plugins - TODO: improve load
+      # loading plugins
+      # TODO: - improve load
+      #       - loader plugin with marked enable
       plugins = {}
       Dir.glob("#{File.dirname(__FILE__)}/plugins/*.rb").each { |file| require file }
       Planetarium::Plugin::Base.repository.each do |r|

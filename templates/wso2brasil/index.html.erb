@@ -39,13 +39,18 @@
           <p>E para quem ainda n&atilde;o conhece o WSO2, &eacute; uma su&iacute;te de produtos de c&oacute;digo-livre integrados e modulares que d&atilde;o suporte para cimplanta&ccedil;&atilde;o de uma plataforma SOA, suprindo a parte de cria&ccedil;&atilde;o, conex&atilde;o, composi&ccedil;&atilde;o e governan&ccedil;a de servi&ccedil;os.</p>
           <p>Sinta-se a vontade para ler nossas &uacute;ltimas postagens e acompanhar o pessoal da comunidade.</p>
 
-          <!--h2>@WSO2Brasil</h2-->
-
           <h2>Comunidade</h2>
           <ul>
             <li><a href="comunidade.html#jose-nogueira">José Nogueira</a></li>
             <li><a href="comunidade.html#leandro-prado">Leandro Prado</a></li>
             <li><a href="comunidade.html#leonardo-saraiva">Leonardo Saraiva</a></li>
+          </ul>
+
+          <h2>@WSO2Brasil</h2>
+          <ul>
+          <% plugins[:twitter].search({:from => "WSO2brasil"}).each do |t| %>
+            <li><%= t.text %><br />Por: <%= t.from_user %> em: <%= t.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></li>
+          <% end %>
           </ul>
         </div>
       </div>

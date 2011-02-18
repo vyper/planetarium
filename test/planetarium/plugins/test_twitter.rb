@@ -10,7 +10,7 @@ class TestPluginTwitter < Test::Unit::TestCase
     assert_equal @t.plugin_name, :twitter
   end
   
-  def test_search_return_is_array
-    assert @t.search({}).is_a? Array
+  def test_search_return
+    assert @t.search({ :from => "wso2brasil" }).is_a? Array
   end
 end

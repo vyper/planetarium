@@ -8,7 +8,7 @@ require 'planetarium/command'
 require 'planetarium/plugin'
 
 module Planetarium
-  VERSION       = "0.0.7"
+  VERSION       = "0.0.8"
   
   # configuration default
   CONFIG_FILE   = "#{File.dirname(__FILE__)}/../config/config.yml"
