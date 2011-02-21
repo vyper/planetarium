@@ -1,0 +1,4 @@
+- posts archive in database;
+- search in archive;
+- option to enable/disable plugin;
+- refactor in lib/planetarium/command.rb;
