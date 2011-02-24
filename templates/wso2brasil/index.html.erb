@@ -49,7 +49,7 @@
           <h2>@WSO2Brasil</h2>
           <ul>
           <% plugins[:twitter].search({:from => "WSO2brasil"}).each do |t| %>
-            <li><%= t.text %><br />Por: <%= t.from_user %> em: <%= t.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></li>
+            <li><%= t.text %><br />Por: <%= t.from_user %> em: <%= t.created_at.strftime("%d/%m/%Y %H:%M:%S") %></li>
           <% end %>
           </ul>
           
@@ -64,7 +64,7 @@
     </div>
 
     <div id="footer">
-        <a href="http://github.com/vyper/planetarium/" class="alignright">Planetarium (<%= version %>)</a>
+        <a href="http://github.com/vyper/planetarium/" class="alignright">Planetarium (<%= version %>)</a> - <em>Última geração: <%= updated.strftime("%d/%m/%Y %H:%M:%S") %></em>
     </div>
 
     <script type="text/javascript">
