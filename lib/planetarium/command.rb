@@ -24,6 +24,8 @@ module Planetarium
       
       if !File.exists? export_path
         puts "ERROR: export_path (#{export_path}) don't exists"
+      elsif !File.writable? export_path
+        puts "ERROR: no access to write in export_path (#{export_path})"
       elsif !File.exists? "#{TEMPLATE_PATH}/#{template}"
         puts "ERROR: template (#{template}) don't exists"
       else
