@@ -12,5 +12,5 @@ module Planetarium
   
   # configuration default
   CONFIG_FILE   = "#{File.dirname(__FILE__)}/../config/config.yml"
-  TEMPLATE_PATH = "#{File.dirname(__FILE__)}/../templates/"
+  TEMPLATE_PATH = "#{File.dirname(__FILE__)}/../templates"
 end
