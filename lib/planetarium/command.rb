@@ -29,7 +29,19 @@ module Planetarium
       elsif !File.exists? "#{TEMPLATE_PATH}/#{template}"
         puts "ERROR: template (#{template}) don't exists"
       else
-        feeds = Feedzirra::Feed.fetch_and_parse(config.urls).each_value
+        feeds   = []
+        entries = []
+        Feedzirra::Feed.fetch_and_parse(config.urls).each_value do |f|
+          feed = Planetarium::Model::Feed.new f.url, f.title, f.feed_url, f.last_modified
+          feeds << feed
+
+          f.entries.each do |e|
+            entry = Planetarium::Model::Entry.new e.id, e.title, e.author, e.published, e.content, e.url, e.updated, e.summary, feed
+            entries << entry
+          end
+        end
+        entries = entries.sort_by { |o| o.published }
+        entries.reverse!
 
         # loading plugins
         # TODO: - improve load

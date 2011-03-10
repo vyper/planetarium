@@ -9,17 +9,12 @@
   <body>
     <h1><%= name %></h1>
 
-    <% feeds.each do |feed| %>
-      <h2><%= feed.title %></h2>
-
-      <% feed.entries.each do |entry| %>
-        <h3><%= entry.title %></h3>
-        <p>- <%= entry.author %> (<%= entry.published.strftime("%Y-%m-%d %H:%M:%S %Z") %>)</p>
-        <div>
-          <%= entry.content %>
-        </div>
-      <% end %>
-
+    <% entries.each do |entry| %>
+      <h3><%= entry.title %></h3>
+      <p>- <%= entry.author %> (<%= entry.published.strftime("%Y-%m-%d %H:%M:%S %Z") %>)</p>
+      <div>
+        <%= entry.content %>
+      </div>
     <% end %>
 
     <hr />

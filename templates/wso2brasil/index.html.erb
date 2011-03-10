@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
   <head>
     <title><%= name %></title>
-	  <meta name="google-site-verification" content="e0f-T_503vbHSayfYjY5YHugMOKJWbZOFQMZnLBQi1E" />
-	  <meta name="description" content="Comunidade brasileira de interessados e curiosos na plataforma WSO2, estamos aqui para compartilharmos conhecimento e notícias, além é claro de ajudar a difundir a tecnologia" />
-	  <meta name="keywords" content="tecnologia, soa, wso2, arquitetura, desenvolvimento, código-livre" />
-	  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+    <meta name="google-site-verification" content="e0f-T_503vbHSayfYjY5YHugMOKJWbZOFQMZnLBQi1E" />
+    <meta name="description" content="Comunidade brasileira de interessados e curiosos na plataforma WSO2, estamos aqui para compartilharmos conhecimento e notícias, além é claro de ajudar a difundir a tecnologia" />
+    <meta name="keywords" content="tecnologia, soa, wso2, arquitetura, desenvolvimento, código-livre" />
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
     <meta name="generator" content="Planetarium (<%= version %>) - http://github.com/vyper/planetarium/">
-  	<link rel="canonical" href="http://www.wso2brasil.com.br/" />
+    <link rel="canonical" href="http://www.wso2brasil.com.br/" />
     <link rel="stylesheet" href="http://www.wso2brasil.com.br/styles/wso2brasil.css" type="text/css">
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="<%= name %> ATOM Feed" />
   </head>
@@ -21,14 +21,12 @@
       <div class="colleft">
         <div class="col1">
           <div class="entry">
-          <% feeds.each do |feed| %>
-            <% feed.entries.each do |entry| %>
-            <h2><%= entry.title %></h2>
-            <p class="author"><%= entry.author %> (<%= entry.published.strftime("%d/%m/%Y") %>)</p>
-            <div class="content">
-              <%= entry.content %>
-            </div>
-            <% end %>
+          <% entries.each do |entry| %>
+          <h2><%= entry.title %></h2>
+          <p class="author"><%= entry.author %> (<%= entry.published.strftime("%d/%m/%Y") %>)</p>
+          <div class="content">
+            <%= entry.content %>
+          </div>
           <% end %>
           </div>
         </div>
