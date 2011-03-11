@@ -9,7 +9,18 @@
     <meta name="generator" content="Planetarium (<%= version %>) - http://github.com/vyper/planetarium/">
     <link rel="canonical" href="http://www.wso2brasil.com.br/" />
     <link rel="stylesheet" href="http://www.wso2brasil.com.br/styles/wso2brasil.css" type="text/css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="javascripts/jquery.colorbox.min.js"></script>
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="<%= name %> ATOM Feed" />
+    <script>
+    $(document).ready( function() { 
+      $("a[rel^='lightbox']").colorbox({
+        transition: "none",
+        width: "75%",
+        height: "75%"
+      });
+    });
+    </script>
   </head>
 
   <body>
