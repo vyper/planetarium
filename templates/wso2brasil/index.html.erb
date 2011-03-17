@@ -14,10 +14,9 @@
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="<%= name %> ATOM Feed" />
     <script>
     $(document).ready( function() { 
-      $("a[rel^='lightbox']").colorbox({
-        transition: "none",
-        width: "75%",
-        height: "75%"
+      var thumbnails = 'a:has(img)[href$=".bmp"],a:has(img)[href$=".gif"],a:has(img)[href$=".jpg"],a:has(img)[href$=".jpeg"],a:has(img)[href$=".png"],a:has(img)[href$=".BMP"],a:has(img)[href$=".GIF"],a:has(img)[href$=".JPG"],a:has(img)[href$=".JPEG"],a:has(img)[href$=".PNG"],a:has(img)[rel^="lightbox"]';
+      $(thumbnails).colorbox({
+        transition: "none"
       });
     });
     </script>
