@@ -57,7 +57,10 @@
           <h2>@WSO2Brasil</h2>
           <ul>
           <% plugins[:twitter].search({:from => "WSO2brasil"}).each do |t| %>
-            <li><%= t.text %><br />Por: <%= t.from_user %> em: <%= t.created_at.strftime("%d/%m/%Y %H:%M:%S") %></li>
+            <li>
+              <%= t.text %><br />
+              <span class="author">Em: <%= t.created_at.strftime("%d/%m/%Y %H:%M:%S") %>
+            </li>
           <% end %>
           </ul>
           
