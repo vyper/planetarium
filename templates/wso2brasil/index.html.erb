@@ -9,8 +9,15 @@
     <meta name="generator" content="Planetarium (<%= version %>) - http://github.com/vyper/planetarium/">
     <link rel="canonical" href="http://www.wso2brasil.com.br/" />
     <link rel="stylesheet" href="http://www.wso2brasil.com.br/styles/wso2brasil.css" type="text/css">
+
+    <!-- Syntax Highlighter: http://alexgorbatchev.com/SyntaxHighlighter/ -->
+    <script src="http://www.wso2brasil.com.br/javascripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="http://www.wso2brasil.com.br/javascripts/SyntaxHighlighter/shAutoloader.js"></script>
+    <link href="http://www.wso2brasil.com.br/styles/SyntaxHighlighter/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.wso2brasil.com.br/styles/SyntaxHighlighter/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="javascripts/jquery.colorbox.min.js"></script>
+    <script src="http://www.wso2brasil.com.br/javascripts/jquery.colorbox.min.js"></script>
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="<%= name %> ATOM Feed" />
     <script>
     $(document).ready( function() { 
@@ -87,6 +94,45 @@
       var pageTracker = _gat._getTracker("UA-15892577-2");
       pageTracker._trackPageview();
       } catch(err) {}
+    </script>
+    <script type="text/javascript">
+      function path() {
+        var args = arguments, result = [];
+             
+        for (var i = 0; i < args.length; i++)
+          result.push(args[i].replace('@', 'http://www.wso2brasil.com.br/javascripts/SyntaxHighlighter/'));
+             
+        return result;
+      };
+      
+      SyntaxHighlighter.autoloader.apply(null, path(
+        'applescript            @shBrushAppleScript.js',
+        'actionscript3 as3      @shBrushAS3.js',
+        'bash shell             @shBrushBash.js',
+        'coldfusion cf          @shBrushColdFusion.js',
+        'cpp c                  @shBrushCpp.js',
+        'c# c-sharp csharp      @shBrushCSharp.js',
+        'css                    @shBrushCss.js',
+        'delphi pascal          @shBrushDelphi.js',
+        'diff patch pas         @shBrushDiff.js',
+        'erl erlang             @shBrushErlang.js',
+        'groovy                 @shBrushGroovy.js',
+        'java                   @shBrushJava.js',
+        'jfx javafx             @shBrushJavaFX.js',
+        'js jscript javascript  @shBrushJScript.js',
+        'perl pl                @shBrushPerl.js',
+        'php                    @shBrushPhp.js',
+        'text plain             @shBrushPlain.js',
+        'py python              @shBrushPython.js',
+        'ruby rails ror rb      @shBrushRuby.js',
+        'sass scss              @shBrushSass.js',
+        'scala                  @shBrushScala.js',
+        'sql                    @shBrushSql.js',
+        'vb vbnet               @shBrushVb.js',
+        'xml xhtml xslt html    @shBrushXml.js'
+      ));
+
+      SyntaxHighlighter.all();
     </script>
   </body>
 </html>
