@@ -74,7 +74,12 @@
           <h2>Plataforma SOA WSO2</h2>
           <ul>
           <% plugins[:wso2].products.each do |p| %>
-            <li><a href="<%= p.url %>" target="_blank"><%= p.name %></a></li>
+            <li>
+              <a href="<%= p.url %>" target="_blank"><%= p.name %></a>
+              <% if p.release %>
+                <sup>new <%= p.release.version %></sup>
+              <% end %>
+            </li>
           <% end %>
           </ul>
         </div>
