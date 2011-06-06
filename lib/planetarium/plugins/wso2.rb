@@ -25,7 +25,7 @@ module Planetarium
             r.version = product.css("div.release-note div.version a b").text.sub("New", "")
 
             p = Product.new
-            p.release = r
+            p.release = r if r.version.length > 0
             p.url = "http://wso2.org/#{product.css('div.hm-tabs a[href*="library/"]').attr("href").to_s.gsub(/^\//, "")}"
             p.slug = product.css('a[href*="library/"]').attr("href").to_s.gsub(/^\/?library\//, "")
             products << p

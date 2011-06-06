@@ -76,7 +76,7 @@
           <% plugins[:wso2].products.each do |p| %>
             <li>
               <a href="<%= p.url %>" target="_blank"><%= p.name %></a>
-              <% if p.release %>
+              <% if !p.release.nil? %>
                 <sup>new <%= p.release.version %></sup>
               <% end %>
             </li>
