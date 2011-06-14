@@ -14,19 +14,19 @@ module Planetarium
           # getting products
           value.css("div#product-list div.content div div.hm-tabs").each do |product|
             r = Release.new
-            r.version = product.css("div.release-note div.version a b").text.sub("New", "")
+            r.version = product.previous_element.previous_element.css("div.version a b").text.sub("New", "")
 
             p = Product.new
             p.release = r if r.version.length > 0
-            p.url = "http://wso2.org/#{product.css('a[href*="library/"]').attr("href").to_s.gsub(/^\//, "")}"
-            p.slug = product.css('a[href*="library/"]').attr("href").to_s.gsub(/^\/?library\//, "")
+            p.url = "http://wso2.org/#{product.css('a[href*="library/"]', 'a[href^="/projects/"]').attr("href").to_s.gsub(/^\//, "")}"
+            p.slug = product.css('a[href*="library/"]', 'a[href^="/projects/"]').attr("href").to_s.gsub(/^\/?library\//, "").gsub(/^\/?projects\//, "")
             products << p
           end
           
           # getting developer products
           value.css("div#developer-tool div.content").each do |product|
             r = Release.new
-            r.version = product.css("div.release-note div.version a b").text.sub("New", "")
+            r.version = product.css("div div.release-note div.version a b").text.sub("New", "")
 
             p = Product.new
             p.release = r if r.version.length > 0
@@ -58,6 +58,8 @@ module Planetarium
           'mashup-server'       => "WSO2 Mashup Server",
           'dss'                 => "WSO2 Data Services Server",
           'application-server'  => "WSO2 Application Server",
+          'cep'                 => "WSO2 Complex Event Processing Server",
+          'message-broker'      => "WSO2 Message Broker",
           'carbon'              => "WSO2 Carbon",
           'wsf/php'             => "WSO2 Web Services Framework for PHP",
           'wsf/cpp'             => "WSO2 Web Services Framework for C++",
